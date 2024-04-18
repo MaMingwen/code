@@ -1,3 +1,2 @@
 # code
-
-formal account for coding.
+Write a lot of codes.
