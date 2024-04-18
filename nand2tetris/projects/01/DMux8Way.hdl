@@ -1,0 +1,40 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/01/DMux8Way.hdl
+
+/**
+ * 8-way demultiplexor:
+ * {a, b, c, d, e, f, g, h} = {in, 0, 0, 0, 0, 0, 0, 0} if sel == 000
+ *                            {0, in, 0, 0, 0, 0, 0, 0} if sel == 001
+ *                            etc.
+ *                            {0, 0, 0, 0, 0, 0, 0, in} if sel == 111
+ */
+
+CHIP DMux8Way {
+    IN in, sel[3];
+    OUT a, b, c, d, e, f, g, h;
+
+    PARTS:
+    // Put your code here:
+    DMux(in=in,sel=sel[0],a=ab0,b=ab1);
+    DMux(in=in,sel=sel[1],a=ac0,b=ac1);
+    DMux(in=in,sel=sel[2],a=ae0,b=ae1);
+
+    
+    And(a=ab0,b=ac0,out=ae);
+    And(a=ae0,b=ae,out=a);
+    And(a=ae1,b=ae,out=e);
+
+    And(a=ab0,b=ac1,out=cg);
+    And(a=ae0,b=cg,out=c);
+    And(a=ae1,b=cg,out=g);
+
+    And(a=ab1,b=ac0,out=bf);
+    And(a=ae0,b=bf,out=b);
+    And(a=ae1,b=bf,out=f);
+
+    And(a=ab1,b=ac1,out=dh);
+    And(a=ae0,b=dh,out=d);
+    And(a=ae1,b=dh,out=h);
+}
