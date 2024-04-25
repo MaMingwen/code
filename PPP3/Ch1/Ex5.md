@@ -3,10 +3,10 @@
 2. executable: the output from a linker is called an executable file and on Windows its name is ofen given the suffix ".exe".
 3. **main()**: function name and an empty paranmeters list.
 4. <<: output operator.
-5. function: 
+5. function: Functions are C++ entities that associate a sequence of statements (a function body) with a name and a list of zero or more function parameters.
 6. object code: machine code.
 7. C++: 
-8. header file:
+8. header file: Each element of the C++ standard library is declared or defined (as appropriate) in a header. A header is not necessarily a source file, nor are the sequences delimited by < and > in header names necessarily valid source file names.
 9. output: 
 10. comment: Comments serve as a sort of in-code documentation. When inserted into a program, they are effectively ignored by the compiler; they are solely intended to be used as notes by the humans that read source code.
 11. IDE: Intergrated Development Environment.
