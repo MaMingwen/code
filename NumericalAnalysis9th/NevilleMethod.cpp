@@ -12,6 +12,7 @@
 */
 
 #include <iostream>
+#include <string>
 #include <vector>
 
 int main(){
@@ -21,19 +22,20 @@ int main(){
 int n = 0; //The number of given values.
 double a; //The number at which we want estimate the corresponding value.
 
-double xi; //dummy variable. 
+std::string xi; //dummy variable. 
 std::vector<double> x;
 
-double fi; //dummy variable.
+std::string fi; //dummy variable.
 std::vector<double> f;
 
 std::cout<<"Please enter the number a:";
 std::cin>>a;
 
-std::cout<<"Please enter the numbers x_0,x_1,...,x_n";
+std::cout<<"Please enter the numbers x_0,x_1,...,x_n:"<<std::endl;
 while(true){
-    if(std::cin>>xi){
-    x.push_back(xi);
+    std::cin>>xi;
+    if(std::stod(xi)){
+    x.push_back(std::stod(xi));
     n++;
     }
     else{
@@ -41,9 +43,15 @@ while(true){
     }
 }
 
-std::cout<<"Please enter the values f(x_0),f(x_1),...,f(x_n)";
-while(std::cin>>fi){
-    f.push_back(fi);
+std::cout<<"Please enter the values f(x_0),f(x_1),...,f(x_n):"<<std::endl;
+while(true){
+    std::cin>>fi;
+    if(std::stod(fi)){
+    f.push_back(std::stod(fi));
+    }
+    else{
+        break;
+    }
 }
 
 //Calculate.
