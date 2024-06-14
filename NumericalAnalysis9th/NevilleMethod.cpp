@@ -9,6 +9,9 @@
 
 ## Data structure
 1. Vectors
+
+## Fixed bugs
+1. After terminating a cin stream, the program can't excute second cin. The reason is that cin stream is under 'fail state' or read a false input or end-of-file.
 */
 
 #include <iostream>
@@ -17,45 +20,42 @@
 
 int main(){
 
-//Read from inputs.
+//## Read from inputs.
 
 int n = 0; //The number of given values.
 double a; //The number at which we want estimate the corresponding value.
 
-std::string xi; //dummy variable. 
+double xi; //dummy variable. 
 std::vector<double> x;
 
-std::string fi; //dummy variable.
+double fi; //dummy variable.
 std::vector<double> f;
 
 std::cout<<"Please enter the number a:";
 std::cin>>a;
 
-std::cout<<"Please enter the numbers x_0,x_1,...,x_n:"<<std::endl;
-while(true){
-    std::cin>>xi;
-    if(std::stod(xi)){
-    x.push_back(std::stod(xi));
+std::cout<<"Please enter the numbers x_0,x_1,...,x_n. Terminate by inputing 'z'."<<std::endl;
+while(std::cin>>xi){
+    x.push_back(xi);
     n++;
-    }
-    else{
-        break;
-    }
 }
+std::cout<<n<<std::endl;
 
-std::cout<<"Please enter the values f(x_0),f(x_1),...,f(x_n):"<<std::endl;
-while(true){
+//The order of the following statements can't be changed.
+std::cin.clear();//fix the first bug.
+std::cin.ignore();//fix the first bug.
+
+std::cout<<"Please enter the values f(x_0),f(x_1),...,f(x_n):"<<"There are "<<n<<" values."<<std::endl;
+
+for(int i = 0;i<n;i++){
     std::cin>>fi;
-    if(std::stod(fi)){
-    f.push_back(std::stod(fi));
-    }
-    else{
-        break;
-    }
+    f.push_back(fi);
 }
 
-//Calculate.
+//## Calculate.
+//### Create a matrix, and calculate the corresponding values.
 
-//Out the table.
-std::cout << a << std::endl;
+
+//## Out the table.
+
 }
